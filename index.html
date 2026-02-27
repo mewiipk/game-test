@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Story Game Builder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Story Game Builder</h1>
+      <p>Create a branching visual-novel style story game with NPC dialogue, choices, and multiple endings.</p>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>1) Story Script (JSON)</h2>
+        <p>
+          Define your game using nodes and choices. Each node should include: <code>id</code>, <code>speaker</code>,
+          <code>text</code>, and optional <code>choices</code>.
+        </p>
+        <textarea id="scriptEditor" spellcheck="false"></textarea>
+        <div class="row">
+          <button id="loadTemplateBtn">Load Starter Template</button>
+          <button id="saveBtn">Save Locally</button>
+          <button id="runBtn" class="primary">Run Game</button>
+        </div>
+      </section>
+
+      <section class="panel two-col">
+        <div>
+          <h2>2) Characters</h2>
+          <p>Add character profile cards and avatar hints. You can paste an avatar URL or write your own drawing prompt.</p>
+          <form id="characterForm">
+            <label>Name <input id="charName" required /></label>
+            <label>Role <input id="charRole" placeholder="Mentor, Rival, Villager..." /></label>
+            <label>Avatar URL (optional) <input id="charAvatar" placeholder="https://..." /></label>
+            <label>Avatar Prompt Template
+              <textarea id="charPrompt" rows="3" placeholder="anime style traveler, warm expression, soft rim light..." ></textarea>
+            </label>
+            <button type="submit">Add Character</button>
+          </form>
+          <ul id="characterList"></ul>
+        </div>
+        <div>
+          <h2>Avatar Prompt Helper</h2>
+          <pre id="avatarTemplate">Character avatar prompt template:
+- Name:
+- Age range:
+- Visual style (anime / realistic / pixel art):
+- Outfit:
+- Key accessories:
+- Emotion:
+- Background setting:
+- Color palette:
+- Lighting:
+- Framing (portrait/half-body/full-body):</pre>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>3) Game Preview</h2>
+        <div id="gameView" class="game-view">
+          <div id="speaker" class="speaker">Press "Run Game" to start.</div>
+          <div id="text" class="text">Your story scene will appear here.</div>
+          <div id="choices" class="choices"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>Tip: Mark endings by creating nodes with no choices. You can label them "Good Ending" / "Bad Ending" in text.</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
